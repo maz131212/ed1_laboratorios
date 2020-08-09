@@ -57,7 +57,7 @@ module gateLevel1_3(input wire A, B, C, D, output wire Y);
 // EJERCICIO 01_04
 // Función a implementar: Y = (B' * D') + (B * D) + (A * B) + (A * C);
 
-module operadores1_4(input wire A, B, C, output wire Y);
+module operadores1_4(input wire A, B, C, D, output wire Y);
 
   assign Y = (~B & ~D) | (B & D) | (A & B) | (A & C);
 
