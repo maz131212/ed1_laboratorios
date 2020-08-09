@@ -17,6 +17,7 @@ module testbench();
 
   initial begin
     # 5 $display(" ");
+    $display(" ");
     $display(" Tabla 1 y 2");
     $display("A B C | Y1 Y2");
     $display("------|------");
@@ -61,8 +62,68 @@ module testbench();
   end
 
 
+  operadores2_1 OP5(p1, p2, p3, p4, led5);
+  gateLevel2_2 GL6(p2, p3, led6);
+
+  initial begin
+    #35 $display(" ");
+    $display(" Tabla 5 y 6");
+    $display("A B C D | Y5 Y6");
+    $display("--------|------");
+    $monitor("%b %b %b %b | %b  %b", p1, p2, p3, p4, led5, led6);
+       p1 = 0; p2 = 0; p3 = 0; p4 = 0;
+    #1 p1 = 0; p2 = 0; p3 = 0; p4 = 1;
+    #1 p1 = 0; p2 = 0; p3 = 1; p4 = 0;
+    #1 p1 = 0; p2 = 0; p3 = 1; p4 = 1;
+    #1 p1 = 0; p2 = 1; p3 = 0; p4 = 0;
+    #1 p1 = 0; p2 = 1; p3 = 0; p4 = 1;
+    #1 p1 = 0; p2 = 1; p3 = 1; p4 = 0;
+    #1 p1 = 0; p2 = 1; p3 = 1; p4 = 1;
+    #1 p1 = 1; p2 = 0; p3 = 0; p4 = 0;
+    #1 p1 = 1; p2 = 0; p3 = 0; p4 = 1;
+    #1 p1 = 1; p2 = 0; p3 = 1; p4 = 0;
+    #1 p1 = 1; p2 = 0; p3 = 1; p4 = 1;
+    #1 p1 = 1; p2 = 1; p3 = 0; p4 = 0;
+    #1 p1 = 1; p2 = 1; p3 = 0; p4 = 1;
+    #1 p1 = 1; p2 = 1; p3 = 1; p4 = 0;
+    #1 p1 = 1; p2 = 1; p3 = 1; p4 = 1;
+
+  end
+
+
+
+  operadores2_3 OP7(p1, p2, p3, p4, led7);
+  gateLevel2_4 GL8(p1, p2, p3, led8);
+
+  initial begin
+    #55 $display(" ");
+    $display(" Tabla 7 y 8");
+    $display("A B C D | Y7 Y8");
+    $display("--------|------");
+    $monitor("%b %b %b %b | %b  %b", p1, p2, p3, p4, led7, led8);
+       p1 = 0; p2 = 0; p3 = 0; p4 = 0;
+    #1 p1 = 0; p2 = 0; p3 = 0; p4 = 1;
+    #1 p1 = 0; p2 = 0; p3 = 1; p4 = 0;
+    #1 p1 = 0; p2 = 0; p3 = 1; p4 = 1;
+    #1 p1 = 0; p2 = 1; p3 = 0; p4 = 0;
+    #1 p1 = 0; p2 = 1; p3 = 0; p4 = 1;
+    #1 p1 = 0; p2 = 1; p3 = 1; p4 = 0;
+    #1 p1 = 0; p2 = 1; p3 = 1; p4 = 1;
+    #1 p1 = 1; p2 = 0; p3 = 0; p4 = 0;
+    #1 p1 = 1; p2 = 0; p3 = 0; p4 = 1;
+    #1 p1 = 1; p2 = 0; p3 = 1; p4 = 0;
+    #1 p1 = 1; p2 = 0; p3 = 1; p4 = 1;
+    #1 p1 = 1; p2 = 1; p3 = 0; p4 = 0;
+    #1 p1 = 1; p2 = 1; p3 = 0; p4 = 1;
+    #1 p1 = 1; p2 = 1; p3 = 1; p4 = 0;
+    #1 p1 = 1; p2 = 1; p3 = 1; p4 = 1;
+    #1 $display(" ");
+    #1 $display(" ");
+
+  end
+
   initial
-    #35 $finish;
+    #75 $finish;
 
 
   initial begin

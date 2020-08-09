@@ -62,3 +62,57 @@ module operadores1_4(input wire A, B, C, D, output wire Y);
   assign Y = (~B & ~D) | (B & D) | (A & B) | (A & C);
 
 endmodule
+
+
+
+// EJERCICIO 02_01
+// Función a implementar: Y = (B' * C' * D') + (A * C') + (A * B') + (A * C * D');
+module operadores2_1(input wire A, B, C, D, output wire Y);
+
+  assign Y = (~B & ~C & ~D) | (A & ~C) | (A & ~B) | (A & C & ~D);
+
+endmodule
+
+
+// EJERCICIO 02_02
+// Ecuación a implementar:
+// Y = (B' * C') + (C)
+
+module gateLevel2_2(input wire B, C, output wire Y);
+
+  wire notB, notC, a1;
+
+  not (notB, B);
+  not (notC, C);
+
+  and (a1, notB, notC);
+
+  or  (Y, a1, C);
+
+endmodule
+
+
+// EJERCICIO 02_03
+// Función a implementar: Y = (B) + (C' * D) + (A * D);
+module operadores2_3(input wire A, B, C, D, output wire Y);
+
+  assign Y = (B) | (~C & D) | (A & D);
+
+endmodule
+
+
+// EJERCICIO 02_04
+// Ecuación a implementar:
+// Y = (B) + (A' * C')
+module gateLevel2_4(input wire A, B, C, output wire Y);
+
+  wire notA, notC, a1;
+
+  not (notA, A);
+  not (notC, C);
+
+  and (a1, notA, notC);
+
+  or  (Y, a1, B);
+
+endmodule
