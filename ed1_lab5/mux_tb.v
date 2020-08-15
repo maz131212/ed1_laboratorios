@@ -47,7 +47,7 @@ module mux();
     $display("A B | Y");
     $display("----|---");
     $monitor("%b %b | %b", s1, s0, prueba2);
-       d0 = 0; d1 = 1; d2 = 1; d3 = 0;
+       d0 = 0; d1 = 1; d2 = 0; d3 = 1;
        s1 = 0; s0 = 0; 
     #1 s1 = 0; s0 = 1; 
     #1 s1 = 1; s0 = 0; 
@@ -55,15 +55,17 @@ module mux();
     
   end
 
+  //PROBANDO EL MUX 8:1 SIMPLE
   mux81 mux8simple(s0, s1, s2, d0, d1, d2, d3, d4, d5, d6, d7, prueba3);
 
    initial begin
     # 25 $display(" ");
     $display(" ");
+    $display("prueba mux 8:1 ");
     $display("A B C | Y");
     $display("------|---");
     $monitor("%b %b %b | %b", s2, s1, s0, prueba3);
-       d4 = 1; d5 = 0; d6 = 0; d7 = 1;
+       d4 = 0; d5 = 0; d6 = 1; d7 = 1;
        s2 = 0; s1 = 0; s0 = 0;
     #1 s2 = 0; s1 = 0; s0 = 1;
     #1 s2 = 0; s1 = 1; s0 = 0;
@@ -74,7 +76,74 @@ module mux();
     #1 s2 = 1; s1 = 1; s0 = 1;
 
   end
+
+
+
+  //MUX 8:1 DE LA TABLA 1
+  t1mux81 t1mux8(s2, s1, s0, led1);
+
+  initial begin
+    # 35 $display(" ");
+    $display(" ");
+    $display("Tabla 01 mux8:1");
+    $display("A B C | Y");
+    $display("------|---");
+    $monitor("%b %b %b | %b", s2, s1, s0, led1);
+       s2 = 0; s1 = 0; s0 = 0;
+    #1 s2 = 0; s1 = 0; s0 = 1;
+    #1 s2 = 0; s1 = 1; s0 = 0;
+    #1 s2 = 0; s1 = 1; s0 = 1;
+    #1 s2 = 1; s1 = 0; s0 = 0;
+    #1 s2 = 1; s1 = 0; s0 = 1;
+    #1 s2 = 1; s1 = 1; s0 = 0;
+    #1 s2 = 1; s1 = 1; s0 = 1;
+
+  end
+
+  //MUX 4:1 DE LA TABLA 1
+  t1mux41 t1mux4(s2, s1, s0, led2);
+
+  initial begin
+    # 45 $display(" ");
+    $display(" ");
+    $display("Tabla 01 mux4:1");
+    $display("A B C | Y");
+    $display("------|---");
+    $monitor("%b %b %b | %b", s2, s1, s0, led2);
+        s2 = 0; s1 = 0; s0 = 0;
+    #1 s2 = 0; s1 = 0; s0 = 1;
+    #1 s2 = 0; s1 = 1; s0 = 0;
+    #1 s2 = 0; s1 = 1; s0 = 1;
+    #1 s2 = 1; s1 = 0; s0 = 0;
+    #1 s2 = 1; s1 = 0; s0 = 1;
+    #1 s2 = 1; s1 = 1; s0 = 0;
+    #1 s2 = 1; s1 = 1; s0 = 1;
     
+  end
+
+  //MUX 2:1 DE LA TABLA 1
+  t1mux21 t1mux2(s2, s1, s0, led3);
+
+  initial begin
+    # 55 $display(" ");
+    $display(" ");
+    $display("Tabla 01 mux2:1");
+    $display("A B C | Y");
+    $display("------|---");
+    $monitor("%b %b %b | %b", s2, s1, s0, led3);
+        s2 = 0; s1 = 0; s0 = 0;
+    #1 s2 = 0; s1 = 0; s0 = 1;
+    #1 s2 = 0; s1 = 1; s0 = 0;
+    #1 s2 = 0; s1 = 1; s0 = 1;
+    #1 s2 = 1; s1 = 0; s0 = 0;
+    #1 s2 = 1; s1 = 0; s0 = 1;
+    #1 s2 = 1; s1 = 1; s0 = 0;
+    #1 s2 = 1; s1 = 1; s0 = 1;
+    
+  end
+  
+  
+
   /*
    initial begin
     # 10 $display(" ");
@@ -94,7 +163,7 @@ module mux();
   */
 
   initial
-    #35 $finish;
+    #65 $finish;
 
   /*
   initial begin
