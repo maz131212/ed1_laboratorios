@@ -144,26 +144,73 @@ module mux();
   
   
 
-  /*
-   initial begin
-    # 10 $display(" ");
+
+  //MUX 8:1 DE LA TABLA 2
+  t2mux81 t2mux8(s2, s1, s0, led4);
+
+  initial begin
+    # 65 $display(" ");
     $display(" ");
-    $display("S A B | Y");
+    $display("Tabla 02 mux8:1");
+    $display("A B C | Y");
     $display("------|---");
-    $monitor("%b %b %b | %b", p1, p2, p3, led1);
-       p1 = 0; p2 = 0; p3 = 0;
-    #1 p1 = 0; p2 = 0; p3 = 1;
-    #1 p1 = 0; p2 = 1; p3 = 0;
-    #1 p1 = 0; p2 = 1; p3 = 1;
-    #1 p1 = 1; p2 = 0; p3 = 0;
-    #1 p1 = 1; p2 = 0; p3 = 1;
-    #1 p1 = 1; p2 = 1; p3 = 0;
-    #1 p1 = 1; p2 = 1; p3 = 1;
+    $monitor("%b %b %b | %b", s2, s1, s0, led4);
+       s2 = 0; s1 = 0; s0 = 0;
+    #1 s2 = 0; s1 = 0; s0 = 1;
+    #1 s2 = 0; s1 = 1; s0 = 0;
+    #1 s2 = 0; s1 = 1; s0 = 1;
+    #1 s2 = 1; s1 = 0; s0 = 0;
+    #1 s2 = 1; s1 = 0; s0 = 1;
+    #1 s2 = 1; s1 = 1; s0 = 0;
+    #1 s2 = 1; s1 = 1; s0 = 1;
+
   end
-  */
+
+  //MUX 4:1 DE LA TABLA 2
+  t2mux41 t2mux4(s2, s1, s0, led5);
+
+  initial begin
+    # 75 $display(" ");
+    $display(" ");
+    $display("Tabla 02 mux4:1");
+    $display("A B C | Y");
+    $display("------|---");
+    $monitor("%b %b %b | %b", s2, s1, s0, led5);
+        s2 = 0; s1 = 0; s0 = 0;
+    #1 s2 = 0; s1 = 0; s0 = 1;
+    #1 s2 = 0; s1 = 1; s0 = 0;
+    #1 s2 = 0; s1 = 1; s0 = 1;
+    #1 s2 = 1; s1 = 0; s0 = 0;
+    #1 s2 = 1; s1 = 0; s0 = 1;
+    #1 s2 = 1; s1 = 1; s0 = 0;
+    #1 s2 = 1; s1 = 1; s0 = 1;
+    
+  end
+
+  //MUX 2:1 DE LA TABLA 2
+  t2mux21 t2mux2(s2, s1, s0, led6);
+
+  initial begin
+    # 85 $display(" ");
+    $display(" ");
+    $display("Tabla 02 mux2:1");
+    $display("A B C | Y");
+    $display("------|---");
+    $monitor("%b %b %b | %b", s2, s1, s0, led6);
+        s2 = 0; s1 = 0; s0 = 0;
+    #1 s2 = 0; s1 = 0; s0 = 1;
+    #1 s2 = 0; s1 = 1; s0 = 0;
+    #1 s2 = 0; s1 = 1; s0 = 1;
+    #1 s2 = 1; s1 = 0; s0 = 0;
+    #1 s2 = 1; s1 = 0; s0 = 1;
+    #1 s2 = 1; s1 = 1; s0 = 0;
+    #1 s2 = 1; s1 = 1; s0 = 1;
+    
+  end
+ 
 
   initial
-    #65 $finish;
+    #95 $finish;
 
   /*
   initial begin
