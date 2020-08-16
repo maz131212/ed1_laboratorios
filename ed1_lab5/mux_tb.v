@@ -110,7 +110,7 @@ module mux();
     $display("A B C | Y");
     $display("------|---");
     $monitor("%b %b %b | %b", s2, s1, s0, led2);
-        s2 = 0; s1 = 0; s0 = 0;
+       s2 = 0; s1 = 0; s0 = 0;
     #1 s2 = 0; s1 = 0; s0 = 1;
     #1 s2 = 0; s1 = 1; s0 = 0;
     #1 s2 = 0; s1 = 1; s0 = 1;
@@ -131,7 +131,7 @@ module mux();
     $display("A B C | Y");
     $display("------|---");
     $monitor("%b %b %b | %b", s2, s1, s0, led3);
-        s2 = 0; s1 = 0; s0 = 0;
+       s2 = 0; s1 = 0; s0 = 0;
     #1 s2 = 0; s1 = 0; s0 = 1;
     #1 s2 = 0; s1 = 1; s0 = 0;
     #1 s2 = 0; s1 = 1; s0 = 1;
@@ -212,11 +212,11 @@ module mux();
   initial
     #95 $finish;
 
-  /*
+  
   initial begin
-    //$dumpfile("mux_tb.vcd");
-    //$dumpvars(0, mux);
+    $dumpfile("mux_tb.vcd");
+    $dumpvars(0, mux);
   end
-  */
+  
 
 endmodule
