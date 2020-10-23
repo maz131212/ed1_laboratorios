@@ -25,7 +25,7 @@ module ejercicio1();
     $display("--------|---");
     $monitor("%b %b %b %b | %b ", clk, reset, enabled, load, q);
   
-    d = 12'b100110011001;
+    d = 12'b000110100010; //418 será el valor precargado
     
     //reset (para iniciar en 0)
     clk=0; reset = 1; enabled = 0; load = 0;

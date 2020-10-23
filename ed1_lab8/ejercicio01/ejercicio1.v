@@ -15,7 +15,7 @@ module contador(input wire clk,
                 input wire [11:0] D,
                 output reg [11:0] Q);
 
-  always @(posedge clk or posedge reset)
+  always @(posedge clk or posedge reset or posedge load)
     begin
       if (reset) Q <= 0;
       else if (load) Q <= D;
