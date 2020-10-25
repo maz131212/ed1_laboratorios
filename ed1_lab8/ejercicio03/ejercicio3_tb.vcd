@@ -1,0 +1,71 @@
+$date
+	Sat Oct 24 23:22:24 2020
+$end
+$version
+	Icarus Verilog
+$end
+$timescale
+	1ps
+$end
+$scope module ejercicio3 $end
+$var wire 12 ! Y [11:0] $end
+$var reg 12 " A [11:0] $end
+$var reg 12 # B [11:0] $end
+$var reg 3 $ F [2:0] $end
+$scope module U1 $end
+$var wire 12 % a [11:0] $end
+$var wire 12 & b [11:0] $end
+$var wire 3 ' fun [2:0] $end
+$var reg 12 ( y [11:0] $end
+$upscope $end
+$upscope $end
+$enddefinitions $end
+#0
+$dumpvars
+bx (
+bx '
+bx &
+bx %
+bx $
+bx #
+bx "
+bx !
+$end
+#5
+b1000000000 #
+b1000000000 &
+b110100010 "
+b110100010 %
+#15
+b0 $
+b0 '
+#25
+b1110100010 !
+b1110100010 (
+b1 $
+b1 '
+#35
+b10 $
+b10 '
+#45
+b0 !
+b0 (
+b11 $
+b11 '
+#55
+b100 $
+b100 '
+#65
+b110111111111 !
+b110111111111 (
+b101 $
+b101 '
+#75
+b110 $
+b110 '
+#85
+b111111111111 !
+b111111111111 (
+b111 $
+b111 '
+#95
