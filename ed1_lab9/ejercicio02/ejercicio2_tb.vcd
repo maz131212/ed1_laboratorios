@@ -1,5 +1,5 @@
 $date
-	Fri Oct 30 17:07:25 2020
+	Fri Oct 30 18:27:41 2020
 $end
 $version
 	Icarus Verilog
@@ -18,7 +18,7 @@ $var wire 1 " clk $end
 $var wire 1 # enable $end
 $var wire 1 $ reset $end
 $var wire 1 ! T $end
-$scope module U1 $end
+$scope module U2 $end
 $var wire 1 % D $end
 $var wire 1 " clk $end
 $var wire 1 # enable $end
@@ -30,7 +30,7 @@ $upscope $end
 $enddefinitions $end
 #0
 $dumpvars
-0%
+1%
 1$
 0#
 0"
@@ -45,8 +45,8 @@ $end
 #8
 0"
 #10
-1!
 0%
+1!
 1"
 1#
 0$
@@ -157,8 +157,8 @@ $end
 #84
 0"
 #85
+1%
 0!
-0%
 1$
 #86
 1"

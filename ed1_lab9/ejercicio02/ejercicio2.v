@@ -23,10 +23,9 @@ endmodule
 module FFT(input wire clk, reset, enable, output wire T);
 
   wire cable;
-  assign cable = T ^~ reset;
-
-
-  FFD U1(clk, reset, enable, cable, T);
+  not U1(cable, T);
+  
+  FFD U2(clk, reset, enable, cable, T);
 
 
 endmodule
