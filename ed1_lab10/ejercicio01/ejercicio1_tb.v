@@ -35,9 +35,10 @@ module ejercicio1();
     #5 $display(" ");
     $display(" ");
     $display(" Contador ");
-    $display("c r e l | PB I O");
-    $display("--------|-------");
-    $monitor("%b %b %b %b | %h %h %h ", clkPC, resetPC, enablePC, loadPC, ProgramByte, Instr, Oprnd);
+    $display("c r e l C R E | PB I O");
+    $display("--------------|-------");
+    $monitor("%b %b %b %b %b %b %b | %h %h %h ", 
+              clkPC, resetPC, enablePC, loadPC, clkF, resetF, enableF, ProgramByte, Instr, Oprnd);
   
     addressRAM = 12'b000000011110; //30 el número que se cargará
 
@@ -86,7 +87,7 @@ module ejercicio1();
 
     //contar PC y habilitar Fetch
     resetPC = 0; enablePC = 1; loadPC = 0;
-    enableF = 1;
+    resetF = 0; enableF = 1;
     #20
 
     $finish;
