@@ -5,46 +5,6 @@
 ///// LABORATORIO 10
 ///// EJERCICIO 02
 
-
-<<<<<<< HEAD
-
-
-
-
-
-//////////////////////////////////////////////////////////////////
-///////////////////// ALU
-
-
-
-module ALU(input wire [3:0] A,
-           input wire [3:0] B,
-           input wire [2:0] FUN,
-           output reg [4:0] Y,
-           output reg [4:0] C.
-           output reg [4:0] Z);
-
-  reg [4:0] y;  
-
-  always@(posedge FUN)     
-    begin
-
-      y = 4'b0000;
-
-      case(fun)
-        3'b000: y = A;
-        3'b001: y = A - B;
-        3'b010: y = B;
-        3'b011: y = A + B;
-        3'b100: y = ~(A | B);
-           else y <= 0;
-      endcase 
-
-      
-
-
-    end
-=======
 /////////////////////////////////////////////////////////////////
 ///////////////////// ALU 
 module ALU(
@@ -85,8 +45,7 @@ module ALU(
       
     end
     
-    
->>>>>>> 33c41d6804a7b201bbb0edd7fc78a35b89698879
+
 endmodule
 
 
