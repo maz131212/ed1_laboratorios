@@ -7,16 +7,7 @@
 
 module ejercicio3();
 
-  //variables 
-  reg [2:0] F;
-  reg [11:0] A;
-  reg [11:0] B;
-  wire [11:0] Y;
-
-
-  alu U1(A, B, F, Y);
-  
-
+  /*
   initial begin
     #5 $display(" ");
     $display(" ");
@@ -39,11 +30,11 @@ module ejercicio3();
     #10 F = 7;
     #10  $finish;
   end
-
+  */
 
   initial begin
-    $dumpfile("ejercicio3_tb.vcd");
-    $dumpvars(0, ejercicio3);
+    $dumpfile("ejercicio2_tb.vcd");
+    $dumpvars(0, ejercicio2);
   end
 
 endmodule
