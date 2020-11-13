@@ -1,12 +1,9 @@
 ///// ELECTRÓNICA DIGITAL 1
 ///// AXEL MAZARIEGOS - 131212
-///// 06 - NOVIEMBRE - 2020
+///// 13 - NOVIEMBRE - 2020
 /////
-///// LABORATORIO 10
-///// EJERCICIO 01
-
-
-
+///// PROYECTO 02
+///// PROCESADOR EN HDL
 
 
 
@@ -66,8 +63,6 @@ endmodule
 
 
 
-
-
 //////////////////////////////////////////////////////////////////
 ///////////////////// PROGRAM ROM
 module PROM ( input wire [11:0] direccion,
@@ -90,7 +85,7 @@ endmodule
 
 
 //////////////////////////////////////////////////////////////////
-///////////////////// FETCH
+///////////////////// FLIP FLOPS
 
 // Flip Flop tipo D
 module FFD(input wire clk,  
@@ -109,27 +104,54 @@ module FFD(input wire clk,
 endmodule
 
 
-// Flip Flop tipo D de 8 bits
-module FFD8(input wire clk, 
+
+// Flags (Flip Flop tipo D de 2 bits, con 2 entradas y 2 salidas)
+module FLAGS(input wire clk, 
              input wire reset, 
              input wire enable, 
-             input wire [7:0] D, 
-             output wire [7:0] Q);
+             input wire carry,
+             input wire zero,
+             output wire c_flag,  
+             output wire z_flag);
 
-  FFD U1(clk, reset, enable, D[7], Q[7]);
-  FFD U2(clk, reset, enable, D[6], Q[6]);
-  FFD U3(clk, reset, enable, D[5], Q[5]);
-  FFD U4(clk, reset, enable, D[4], Q[4]);
-
-  FFD U5(clk, reset, enable, D[3], Q[3]);
-  FFD U6(clk, reset, enable, D[2], Q[2]);
-  FFD U7(clk, reset, enable, D[1], Q[1]);
-  FFD U8(clk, reset, enable, D[0], Q[0]);
+  FFD U1(clk, reset, enable, carry, c_flag);
+  FFD U2(clk, reset, enable, zero, z_flag);
 
 endmodule
 
 
-// Fetch
+
+// Accumulator (Flip Flop tipo D de 4 bits)
+module ACCUMULATOR(input wire clk, 
+                   input wire reset, 
+                   input wire enable, 
+                   input wire [3:0] D, 
+                   output wire [3:0] Q);
+
+  FFD U1(clk, reset, enable, D[3], Q[3]);
+  FFD U2(clk, reset, enable, D[2], Q[2]);
+  FFD U3(clk, reset, enable, D[1], Q[1]);
+  FFD U4(clk, reset, enable, D[0], Q[0]);
+
+endmodule
+
+
+// Outputs (Flip Flop tipo D de 4 bits)
+module OUTPUTS( input wire clk, 
+                input wire reset, 
+                input wire enable, 
+                input wire [3:0] D, 
+                output wire [3:0] Q);
+
+  FFD U1(clk, reset, enable, D[3], Q[3]);
+  FFD U2(clk, reset, enable, D[2], Q[2]);
+  FFD U3(clk, reset, enable, D[1], Q[1]);
+  FFD U4(clk, reset, enable, D[0], Q[0]);
+
+endmodule
+
+
+// Fetch (Flip Flop tipo D de 8 bits con dos salidas de 4 bits)
 module FETCH(input wire clk, 
              input wire reset, 
              input wire enable, 
@@ -148,4 +170,7 @@ module FETCH(input wire clk,
   FFD U8(clk, reset, enable, D[0], operando[0]);
   
 endmodule
+
+
+
 //////////////////////////////////////////////////////////////////
