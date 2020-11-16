@@ -1,6 +1,36 @@
-module tabla(input [6:0] address, output [12:0] signals);
+//-----------------------------------------------------
+// ELECTRÓNICA DIGITAL 1
+// AXEL MAZARIEGOS - 131212
+// 16 - NOVIEMBRE - 2020
+//
+// PROYECTO 02
+// PROCESADOR EN HDL
+//-----------------------------------------------------
+//-----------------------------------------------------
+
+
+module decode(input wire phase,  
+              input wire z_flag,
+              input wire c_flag,
+              input wire [3:0] instr,
+
+              output wire incPC,
+              output wire loadPC,
+              output wire loadA,
+              output wire loadFlags,
+              output wire fun [2:0],
+              output wire csRAM,
+              output wire weRAM,
+              output wire oeALU,
+              output wire oeIN,
+              output wire oeOprnd,
+              output wire loadOut);
     
     reg [12:0] signalsReg;
+
+    wire [6:0] address;
+
+    assign address = {instr, c_flag, z_flag, phase};
     
     always @ (address)
         casez(address)
@@ -44,6 +74,20 @@ module tabla(input [6:0] address, output [12:0] signals);
             7'b1111_??1: signalsReg <= 13'b1011_100_100000;
             default: signalsReg <= 13'b1111111111111;
         endcase
-        
-    assign signals = signalsReg;
+
+
+    assign incPC = signalsReg[12];
+    assign loadPC = signalsReg[11];
+    assign loadA = signalsReg[10];
+    assign loadFlags = signalsReg[9];
+    assign fun = signalsReg[8:6];
+    assign csRAM = signalsReg[5];
+    assign weRAM = signalsReg[4];
+    assign oeALU = signalsReg[3];
+    assign oeIN = signalsReg[2];
+    assign oeOprnd = signalsReg[1];
+    assign loadOut = signalsReg[0];
+   
+
+
 endmodule
