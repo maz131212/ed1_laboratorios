@@ -9,85 +9,56 @@
 
 module ejercicio1();
 
-  reg clkPC;
-  reg resetPC;
-  reg enablePC;
-  reg loadPC;
+  reg csRAM;
+  reg weRAM;
   reg [11:0] addressRAM;
 
-  wire [7:0] ProgramByte;
-  
-  reg clkF; 
-  reg resetF; 
-  reg enableF; 
-  
-  wire [3:0] Instr;
-  wire [3:0] Oprnd;
+  wire [3:0] dataBus;
+
                                 
-  elmodulo U1(clkPC, resetPC, enablePC, loadPC, addressRAM,
-              ProgramByte,
-              clkF, resetF, enableF, 
-              Instr, Oprnd)
-  ;
+  RAM U1(csRAM, weRAM, addressRAM, dataBus);
+
+  assign dataBus = 4'b0010;
 
   
   initial begin
     #5 $display(" ");
     $display(" ");
-    $display(" Contador ");
-    $display("c r e l C R E | PB I O");
-    $display("--------------|-------");
-    $monitor("%b %b %b %b %b %b %b | %h %h %h ", 
-              clkPC, resetPC, enablePC, loadPC, clkF, resetF, enableF, ProgramByte, Instr, Oprnd);
+    $display(" RAM ");
+    $display("cs we add | data ");
+    $display("----------|------");
+    $monitor("%b  %b  %h | %b ", csRAM, weRAM, addressRAM, dataBus);
   
-    addressRAM = 12'b000000011110; //30 el número que se cargará
-
-    clkPC = 0;
-    clkF = 0; 
-
-    //reset (para iniciar en 0)
-    resetPC = 1; enablePC = 0; loadPC = 0;
-    resetF = 1; enableF = 0;
-    #2
-
-    //no contar PC
-    resetPC = 0; enablePC = 0; loadPC = 0;
-    resetF = 0; enableF = 0;
+    addressRAM = 12'h001; 
+    csRAM = 0;
+    weRAM = 0; 
     #10
 
-    //contar PC
-    resetPC = 0; enablePC = 1; loadPC = 0;
-    #20
-
-    //no contar
-    resetPC = 0; enablePC = 0; loadPC = 0;
+    csRAM = 1;
+    weRAM = 1;
     #10
 
-    //contar PC y habilitar Fetch
-    resetPC = 0; enablePC = 1; loadPC = 0;
-    enableF = 1;
-    #20
+    weRAM = 0;
+    addressRAM = 12'h005;
+    #10 
 
-    //no contar
-    resetPC = 0; enablePC = 0; loadPC = 0;
+    csRAM = 0;
+    weRAM = 0; 
     #10
 
-    //cargar PC
-    resetPC = 0; enablePC = 0; loadPC = 1;
-    #20
+    weRAM = 1;
+    #10
 
-    //contar PC
-    resetPC = 0; enablePC = 1; loadPC = 0;
-    #20
+    weRAM = 0;
+    addressRAM = 12'h002;
+    #10 
 
-    //reset (para iniciar en 0)
-    resetPC = 1; enablePC = 0; loadPC = 0;
-    resetF = 1; enableF = 0;
-    #2
 
-    //contar PC y habilitar Fetch
-    resetPC = 0; enablePC = 1; loadPC = 0;
-    resetF = 0; enableF = 1;
+    addressRAM = 12'b000000010001; 
+    csRAM = 1;
+    weRAM = 0; 
+    #10
+    
     #20
 
     $finish;
@@ -95,15 +66,11 @@ module ejercicio1();
     
   end
 
-
-  always #2 clkPC = ~clkPC;
-
-  always #2 clkF = ~clkF;
-
-
+  /*
   initial begin
     $dumpfile("ejercicio1_tb.vcd");
     $dumpvars(0, ejercicio1);
   end
+  */
 
 endmodule
