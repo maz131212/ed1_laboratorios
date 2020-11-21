@@ -5,6 +5,7 @@
 //
 // PROYECTO 02
 // PROCESADOR EN HDL
+// DECODE
 //-----------------------------------------------------
 //-----------------------------------------------------
 
@@ -18,7 +19,7 @@ module decode(input wire phase,
               output wire loadPC,
               output wire loadA,
               output wire loadFlags,
-              output wire fun [2:0],
+              output wire [2:0] fun,
               output wire csRAM,
               output wire weRAM,
               output wire oeALU,

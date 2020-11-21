@@ -1,5 +1,14 @@
-//////////////////////////////////////////////////////////////////
-///////////////////// FLIP FLOPS
+//-----------------------------------------------------
+// ELECTRÓNICA DIGITAL 1
+// AXEL MAZARIEGOS - 131212
+// 19 - NOVIEMBRE - 2020
+//
+// PROYECTO 02
+// PROCESADOR EN HDL
+// FLIP FLOPS
+//-----------------------------------------------------
+//-----------------------------------------------------
+
 
 // Flip Flop tipo D
 module FFD(input wire clk,  
@@ -87,16 +96,25 @@ endmodule
 
 
 
-module FFT (input wire clk,
-            input wire reset, 
-            input wire enabled, 
-            output wire Q);
-    
-    FFD U1(clk, reset, enabled, ~Q, Q);
-    
+// Flip Flop tipo D sin enable
+module FFDNE(input wire clk, reset, D, output reg Q);
+
+  always @(posedge clk or posedge reset)
+    begin
+      if (reset)
+        Q <= 1'b0;
+      else
+        Q <= D;
+    end
 endmodule
 
 
 
-
-//////////////////////////////////////////////////////////////////
+// Phase (Flip Flop tipo T en base de un FFD sin enable)
+module FFT (input wire clk,
+            input wire reset, 
+            output wire Q);
+    
+    FFDNE U1(clk, reset, ~Q, Q);
+    
+endmodule

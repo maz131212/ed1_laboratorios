@@ -1,19 +1,25 @@
-//-----------------------------------------------------
+
 // ELECTRÓNICA DIGITAL 1
 // AXEL MAZARIEGOS - 131212
 // 13 - NOVIEMBRE - 2020
 //
 // PROYECTO 02
 // PROCESADOR EN HDL
+// RAM
 //-----------------------------------------------------
 //-----------------------------------------------------
 
-module RAM( input wire chips,          // Chip Select
-            input wire enableRW,       // Read Enable/Write Enable
-            input wire [11:0] address, // Address Input
+module RAM( input wire chips,               // Chip Select
+            input wire enableRW,            // Read Enable/Write Enable
+            input wire [3:0] oprnd,         // Address part1
+            input wire [7:0] program_byte,  // Address part2
             
-            inout wire [3:0] data     // Data bi-directional
+            inout wire [3:0] data           // Data bi-directional
             );
+
+    wire [11:0] address;
+
+    assign address = {oprnd, program_byte};
 
     reg [3:0] data_out;
 

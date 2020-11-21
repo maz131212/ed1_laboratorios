@@ -9,6 +9,7 @@
 
 module ejercicio1();
 
+/*
   reg csRAM;
   reg weRAM;
   reg [11:0] addressRAM;
