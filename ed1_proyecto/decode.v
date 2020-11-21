@@ -33,7 +33,7 @@ module decode(input wire phase,
 
     assign address = {instr, c_flag, z_flag, phase};
     
-    always @ (address)
+    always @ (instr or c_flag or z_flag or phase)
         casez(address)
             // any
             7'b????_??0: signalsReg <= 13'b1000_000_001000;

@@ -42,7 +42,7 @@ module uP(
   wire carry, zero;
   wire [3:0] alu;
 
-  assign address_RAM = {oprnd, program_byte};
+  //assign address_RAM = {oprnd, program_byte};
 
   PCounter U1 (clock, reset, incPC, loadPC, address_RAM, PC);
 
@@ -56,7 +56,7 @@ module uP(
 
   buffer Inputs (oeIN, pushbuttons, data_bus);
 
-  RAM U4 (csRAM, weRAM, oprnd, program_byte, data_bus);
+  RAM U4 (csRAM, weRAM, oprnd, program_byte, data_bus, address_RAM);
 
   OUTPUTS U5 (clock, reset, loadOut, data_bus, FF_out);
 

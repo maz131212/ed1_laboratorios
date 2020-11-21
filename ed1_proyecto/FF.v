@@ -10,7 +10,7 @@
 //-----------------------------------------------------
 
 
-// Flip Flop tipo D
+// Flip Flop tipo D (sincrono)
 module FFD(input wire clk,  
            input wire reset, 
            input wire enable, 
@@ -72,6 +72,9 @@ module OUTPUTS( input wire clk,
   FFD U4(clk, reset, enable, D[0], Q[0]);
 
 endmodule
+
+
+
 
 
 // Fetch (Flip Flop tipo D de 8 bits con dos salidas de 4 bits)

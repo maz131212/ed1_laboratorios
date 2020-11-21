@@ -14,11 +14,12 @@ module RAM( input wire chips,               // Chip Select
             input wire [3:0] oprnd,         // Address part1
             input wire [7:0] program_byte,  // Address part2
             
-            inout wire [3:0] data           // Data bi-directional
+            inout wire [3:0] data,           // Data bi-directional
+
+            output wire [11:0] address
             );
 
-    wire [11:0] address;
-
+    
     assign address = {oprnd, program_byte};
 
     reg [3:0] data_out;
