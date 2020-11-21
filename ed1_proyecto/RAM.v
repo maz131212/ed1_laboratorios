@@ -1,4 +1,4 @@
-
+//-----------------------------------------------------
 // ELECTRÓNICA DIGITAL 1
 // AXEL MAZARIEGOS - 131212
 // 13 - NOVIEMBRE - 2020
@@ -29,28 +29,28 @@ module RAM( input wire chips,               // Chip Select
 
     // Tri-State Buffer control 
     // output : When chips = 0, enableRW = 0
-    assign data = ( ~chips  &&  ~enableRW) ? data_out : 4'bz; 
+    assign data = (chips  &&  !enableRW) ? data_out : 4'bz; 
 
     
 
     // Memory Read Block 
     // Read Operation : When chips = 1, enableRW = 0
     always @ (address or chips or enableRW)
-        begin : MEM_READ
-            if (chips &&  ~enableRW)  begin
+        begin 
+            if (chips &&  !enableRW)
              data_out = mem[address];
         end
-    end
+  
 
 
     // Memory Write Block 
     // Write Operation : When chips = 1, enableRW = 1
     always @ (address or data or chips or enableRW)
-        begin : MEM_WRITE
-            if ( chips && enableRW ) begin
+        begin 
+            if ( chips && enableRW )
            mem[address] = data;
         end
-    end
+    
 
 
 

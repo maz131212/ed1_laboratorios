@@ -1,10 +1,12 @@
-///// ELECTRÓNICA DIGITAL 1
-///// AXEL MAZARIEGOS - 131212
-///// 13 - NOVIEMBRE - 2020
-/////
-///// PROYECTO 02
-///// PROCESADOR EN HDL
-
+//-----------------------------------------------------
+// ELECTRÓNICA DIGITAL 1
+// AXEL MAZARIEGOS - 131212
+// 13 - NOVIEMBRE - 2020
+//
+// PROYECTO 02
+// PROCESADOR EN HDL
+//-----------------------------------------------------
+//-----------------------------------------------------
 
 
 
@@ -27,8 +29,8 @@ module uP(
           
           output wire [7:0] program_byte,
           
-          output wire [11:0] pc,
-          output wire [11:0] address_ram
+          output wire [11:0] PC,
+          output wire [11:0] address_RAM
           );
 
   //señales de control provenientes del decode
@@ -40,10 +42,11 @@ module uP(
   wire carry, zero;
   wire [3:0] alu;
 
+  assign address_RAM = {oprnd, program_byte};
 
-  PCounter U1 (clock, reset, incPC, loadPC, address_ram, pc);
+  PCounter U1 (clock, reset, incPC, loadPC, address_RAM, PC);
 
-  PROM U2 (pc, program_byte);
+  PROM U2 (PC, program_byte);
 
   FETCH U3 (clock, reset, ~phase, program_byte, instr, oprnd);
 
@@ -65,7 +68,7 @@ module uP(
 
   ACCUMULATOR U8 (clock, reset, loadA, alu, accu);
 
-  FFT Phase (clock, reset, clock);
+  FFT Phase (clock, reset, phase);
 
   FLAGS U9 (clock, reset, loadFlags, carry, zero,
             c_flag, z_flag );
@@ -108,7 +111,7 @@ module PROM ( input wire [11:0] direccion,
   reg [7:0] memoria1 [0:4095];
 
   initial begin
-    $readmemb("memoria.list",memoria1);
+    $readmemh("memory.list",memoria1);
   end
 
   assign salida = memoria1[direccion];
