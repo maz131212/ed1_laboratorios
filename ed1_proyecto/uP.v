@@ -90,12 +90,12 @@ module PCounter(input wire clk,
                 input wire [11:0] D,
                 output reg [11:0] Q);
 
-  always @(posedge clk or posedge reset or posedge load)
+  always @(posedge clk or posedge reset )
     begin
       if (reset) Q <= 12'b0;
       else if (load) Q <= D;
       else if (enable) Q <= Q+1;
-      //else Q <= Q;
+      else Q <= Q;
     end
 endmodule
 //////////////////////////////////////////////////////////////////

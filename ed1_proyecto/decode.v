@@ -73,7 +73,7 @@ module decode(input wire phase,
             7'b1110_??1: signalsReg <= 13'b0011_100_000010;
             // NANDM
             7'b1111_??1: signalsReg <= 13'b1011_100_100000;
-            default: signalsReg <= 13'b1111111111111;
+            //default: signalsReg <= 13'b1111111111111;
         endcase
 
 
