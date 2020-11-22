@@ -26,7 +26,7 @@ module ALU(input wire [3:0] A,      // accu
             3'b010: regS = B;                   // deja pasar el dato del data_bus
             3'b011: regS = A + B;               // suma lo que esta en el Accumulator y en el data_bus
             3'b100: regS = {1'b0, ~(A & B)};    // NAND
-            default: regS = 5'b10101;
+            //default: regS = 5'b10101;
         endcase
     
     assign S = regS[3:0];   // la salida seran los 4 bits menos significativos de la bandera

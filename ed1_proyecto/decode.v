@@ -8,30 +8,35 @@
 // DECODE
 //-----------------------------------------------------
 //-----------------------------------------------------
+//
+// El modulo DECODE es la mente maestra en el procesador
+// Se encarga de enviar las señales necesarias para operar las instrucciones
+//
+//-----------------------------------------------------
 
 
-module decode(input wire phase,  
-              input wire z_flag,
-              input wire c_flag,
-              input wire [3:0] instr,
+module decode(input wire phase,         // phase (FFT)
+              input wire z_flag,        // z (proveniente del FF Flags)
+              input wire c_flag,        // carry (proveniente del FF Flags)
+              input wire [3:0] instr,   // instruccion (proveniente del fetch)
 
-              output wire incPC,
-              output wire loadPC,
-              output wire loadA,
-              output wire loadFlags,
-              output wire [2:0] fun,
-              output wire csRAM,
-              output wire weRAM,
-              output wire oeALU,
-              output wire oeIN,
-              output wire oeOprnd,
-              output wire loadOut);
+              output wire incPC,        // enable del PC
+              output wire loadPC,       // load del PC
+              output wire loadA,        // enable del Acumulador
+              output wire loadFlags,    // enable del FF Flags
+              output wire [2:0] fun,    // funciones para la ALU
+              output wire csRAM,        // chip select de la RAM
+              output wire weRAM,        // write enable de la RAM
+              output wire oeALU,        // enable del buffer tri-estado de la ALU
+              output wire oeIN,         // enable del buffer tri-estado de los inputs
+              output wire oeOprnd,      // enable del buffer tri-estado del fecth
+              output wire loadOut);     // enable del FF Outputs
     
-    reg [12:0] signalsReg;
+    reg [12:0] signalsReg;  // bandera para las salidas
 
-    wire [6:0] address;
+    wire [6:0] address;     // bandera para concatenar las entradas
 
-    assign address = {instr, c_flag, z_flag, phase};
+    assign address = {instr, c_flag, z_flag, phase};    // concatennado las entradas
     
     always @ (instr or c_flag or z_flag or phase)
         casez(address)
@@ -76,19 +81,17 @@ module decode(input wire phase,
             //default: signalsReg <= 13'b1111111111111;
         endcase
 
-
-    assign incPC = signalsReg[12];
-    assign loadPC = signalsReg[11];
-    assign loadA = signalsReg[10];
-    assign loadFlags = signalsReg[9];
-    assign fun = signalsReg[8:6];
-    assign csRAM = signalsReg[5];
-    assign weRAM = signalsReg[4];
-    assign oeALU = signalsReg[3];
-    assign oeIN = signalsReg[2];
-    assign oeOprnd = signalsReg[1];
-    assign loadOut = signalsReg[0];
+    assign incPC = signalsReg[12];      // enable del PC 
+    assign loadPC = signalsReg[11];     // load del PC
+    assign loadA = signalsReg[10];      // enable del Acumulador
+    assign loadFlags = signalsReg[9];   // enable del FF Flags
+    assign fun = signalsReg[8:6];       // funciones para la ALU
+    assign csRAM = signalsReg[5];       // chip select de la RAM
+    assign weRAM = signalsReg[4];       // write enable de la RAM
+    assign oeALU = signalsReg[3];       // enable del buffer tri-estado de la ALU
+    assign oeIN = signalsReg[2];        // enable del buffer tri-estado de los inputs
+    assign oeOprnd = signalsReg[1];     // enable del buffer tri-estado del fecth
+    assign loadOut = signalsReg[0];     // enable del FF Outputs
    
-
 
 endmodule
