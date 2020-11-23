@@ -47,7 +47,7 @@ module RAM( input wire chips,               // Señal proveniente del DECODE (cs
 
 
 
-    // Memory Write Block 
+    // Para escribir en la  RAM
     always @ (address or data or chips or enableRW)
         begin 
             if ( chips && enableRW )    
